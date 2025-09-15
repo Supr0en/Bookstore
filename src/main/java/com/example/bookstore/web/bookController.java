@@ -3,7 +3,7 @@ package com.example.bookstore.web;
 import com.example.bookstore.domain.Book;
 import java.util.List;
 import com.example.bookstore.domain.BookRepository;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.example.bookstore.domain.CategoryRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -11,8 +11,11 @@ import org.springframework.web.bind.annotation.*;
 
 @Controller
 public class bookController {
-    @Autowired
-    private BookRepository bookRepository;
+    private final BookRepository bookRepository;
+
+    public bookController(BookRepository bookRepository) {
+        this.bookRepository = bookRepository;
+    }
 
     @RequestMapping(value = "/index")
     public String index(){
@@ -21,7 +24,7 @@ public class bookController {
 
     @RequestMapping(value = "/booklist")
     public String booklist(Model model){
-        List<Book> booksList =  (List<Book>) bookRepository.findAll();
+        List<Book> booksList = (List<Book>) bookRepository.findAll();
         model.addAttribute("booklist", booksList);
         return "booklist";
     }
