@@ -29,12 +29,12 @@ public class bookController {
         return "booklist";
     }
 
-    @RequestMapping(value = "/add")
+    @RequestMapping(value = "/addBook")
     public String addBook(Model model){
         model.addAttribute("book", new Book());
         return "addbook";
     }
-    @RequestMapping(value = "/save", method = RequestMethod.POST)
+    @RequestMapping(value = "/saveBook", method = RequestMethod.POST)
     public String saveBook(Book book){
         bookRepository.save(book);
         return "redirect:/booklist";

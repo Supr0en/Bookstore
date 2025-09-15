@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link type="text/css" rel="stylesheet" href="/css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}" />
+    <meta charset="UTF-8">
+    <title>CategoryList</title>
+</head>
+<body>
+<h1 style="text-align: center">Categories</h1>
+<table class="table table-striped" style="width: 750px;">
+    <thead>
+    <tr style="text-align: center">
+        <td>Category</td>
+
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="category : ${categories}">
+        <td th:text="${category.categoryName}"></td>
+    </tr>
+    </tbody>
+</table>
+<a href="/addCategory" class="btn btn-success">Add Category</a>
+</body>
+</html>

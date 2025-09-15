@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link type="text/css" rel="stylesheet" href="/css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}" />
+    <meta charset="UTF-8">
+    <title>Category form</title>
+</head>
+<body>
+    <h1 style="text-align: center">Category</h1>
+    <form th:method="post" action="#" th:action="@{saveCategory}" th:object="${category}">
+        <p>Category: <input type="text" th:field="*{categoryName}" placeholder="Scifi" /></p>
+        <input type="submit" value="Submit" class="btn btn-success"/>
+    </form>
+</body>
+</html>
