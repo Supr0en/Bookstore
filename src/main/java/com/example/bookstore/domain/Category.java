@@ -1,16 +1,18 @@
 package com.example.bookstore.domain;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
+
+import java.util.List;
 
 @Entity
 public class Category {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+    private Long categoryId;
     private String categoryName;
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "category")
+    private List<Book> books;
 
     public Category() {
         this.categoryName = "";
@@ -19,7 +21,7 @@ public class Category {
         this.categoryName = categoryName;
     }
     public Long getCategoryId() {
-        return id;
+        return categoryId;
     }
 
     public String getCategoryName() {
@@ -29,8 +31,15 @@ public class Category {
         this.categoryName = categoryName;
     }
 
+    public List<Book> getBooks() {
+        return books;
+    }
+    public void setBooks(List<Book> books) {
+        this.books = books;
+    }
+
     @Override
     public String toString() {
-        return "[ id=" + id + ", categoryName=" + categoryName + " ]";
+        return "[ id=" + categoryId + ", categoryName=" + categoryName + " ]";
     }
 }

@@ -1,9 +1,6 @@
 package com.example.bookstore.domain;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 @Entity
 public class Book {
@@ -16,21 +13,26 @@ public class Book {
     private String isbn;
     private String price;
 
+    @ManyToOne
+    @JoinColumn(name = "categoryId")
+    private Category category;
+
     public Book(){
         this.title = null;
         this.author = null;
         this.publicationYear = null;
         this.isbn = null;
         this.price = null;
-
+        this.category = null;
     }
 
-    public Book(String title, String author, String publicationYear, String isbn, String price) {
+    public Book(String title, String author, String publicationYear, String isbn, String price, Category category) {
         this.title = title;
         this.author = author;
         this.publicationYear = publicationYear;
         this.isbn = isbn;
         this.price = price;
+        this.category = category;
     }
     public Long getId() {
         return id;
@@ -68,9 +70,19 @@ public class Book {
     public void setPrice(String price) {
         this.price = price;
     }
+    public Category getCategory() {
+        return category;
+    }
+    public void setCategory(Category category) {
+        this.category = category;
+    }
 
     @Override
     public String toString() {
-        return "Book [id=" + id + ", title=" + title + ", publicationYear=" + publicationYear +  ", isbn=" + isbn + ", price=" + price + "]";
+        if (this.category != null) {
+            return "Book [id=" + id + ", title=" + title + ", publicationYear=" + publicationYear +  ", isbn=" + isbn + ", price=" + price + ", category=" + this.getCategory().getCategoryName() + "]";
+        } else {
+            return "Book [id=" + id + ", title=" + title + ", publicationYear=" + publicationYear +  ", isbn=" + isbn + ", price=" + price + "]";
+        }
     }
 }
