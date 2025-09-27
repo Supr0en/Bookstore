@@ -4,7 +4,6 @@ import com.example.bookstore.domain.Book;
 import java.util.List;
 import com.example.bookstore.domain.BookRepository;
 import com.example.bookstore.domain.CategoryRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -13,11 +12,11 @@ import org.springframework.web.bind.annotation.*;
 @Controller
 public class bookController {
     private final BookRepository bookRepository;
-    @Autowired
-    private CategoryRepository categoryRepository;
+    private final CategoryRepository categoryRepository;
 
-    public bookController(BookRepository bookRepository) {
+    public bookController(BookRepository bookRepository, CategoryRepository categoryRepository) {
         this.bookRepository = bookRepository;
+        this.categoryRepository = categoryRepository;
     }
 
     @RequestMapping(value = "/index")
