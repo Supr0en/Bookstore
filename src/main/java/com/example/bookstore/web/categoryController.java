@@ -22,17 +22,17 @@ public class categoryController {
     public String categoryList(Model model) {
         List<Category> categories = (List<Category>) categoryRepository.findAll();
         model.addAttribute("categories", categories);
-        return "categorylist";
+        return "categorylist"; //categorylist.html
     };
 
     @RequestMapping(value = "/addCategory")
     public String addBook(Model model){
         model.addAttribute("category", new Category());
-        return "addCategory";
+        return "addcategory"; // addcategory.html
     }
     @RequestMapping(value = "/saveCategory", method = RequestMethod.POST)
     public String saveBook(Category category){
         categoryRepository.save(category);
-        return "redirect:/categoryList";
+        return "redirect:/categoryList"; // redirect categorylist.html
     }
 }

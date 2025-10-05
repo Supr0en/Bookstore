@@ -21,31 +21,31 @@ public class bookController {
 
     @RequestMapping(value = "/index")
     public String index(){
-        return "index";
+        return "index"; // index.html
     }
 
     @RequestMapping(value = "/booklist")
     public String booklist(Model model){
         List<Book> booksList = (List<Book>) bookRepository.findAll();
         model.addAttribute("booklist", booksList);
-        return "booklist";
+        return "booklist"; // booklist.html
     }
 
     @RequestMapping(value = "/addBook")
     public String addBook(Model model){
         model.addAttribute("book", new Book());
         model.addAttribute("categoryList", categoryRepository.findAll());
-        return "addbook";
+        return "addbook"; // addbook.html
     }
     @RequestMapping(value = "/saveBook", method = RequestMethod.POST)
     public String saveBook(Book book){
         bookRepository.save(book);
-        return "redirect:/booklist";
+        return "redirect:/booklist"; // redirect booklist.html
     }
     @RequestMapping(value = "/delete/{id}", method = RequestMethod.GET)
     public String deleteBook(@PathVariable("id") Long id){
         bookRepository.deleteById(id);
-        return "redirect:/booklist";
+        return "redirect:/booklist"; // redirect booklist.html
     }
 
     @RequestMapping(value = "/edit/{id}")
@@ -56,6 +56,6 @@ public class bookController {
         } else {
             throw new RuntimeException("Book not found");
         }
-        return "editbook";
+        return "editbook"; // editbook.html
     }
 }
