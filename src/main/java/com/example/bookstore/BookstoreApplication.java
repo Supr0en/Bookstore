@@ -43,8 +43,8 @@ public class BookstoreApplication {
                 log.info(category.toString());
             }
             log.info("save a couple of Books");
-            bookRepository.save(new Book("The Clean coder", "Martin, Robert C", "2011", "2123123-23", "50", categories.get(1)));
-            bookRepository.save(new Book("Clean code", "Martin, Robert C", "2009", "1223121-52", "45", categories.get(1)));
+            bookRepository.save(new Book("The Clean coder", "Martin, Robert C", 2011, "2123123-23", "50", categories.get(1)));
+            bookRepository.save(new Book("Clean code", "Martin, Robert C", 2009, "1223121-52", "45", categories.get(1)));
 
             log.info("fetch all book");
             for (Book book : bookRepository.findAll()) {

@@ -9,7 +9,7 @@ import java.util.List;
 public class Category {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long categoryId;
+    private Long categoryid;
     private String categoryName;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "category")
@@ -22,10 +22,12 @@ public class Category {
     public Category(String categoryName) {
         this.categoryName = categoryName;
     }
-    public Long getCategoryId() {
-        return categoryId;
+    public Long getCategoryid() {
+        return categoryid;
     }
-
+    public void setCategoryid(Long categoryid) {
+        this.categoryid = categoryid;
+    }
     public String getCategoryName() {
         return categoryName;
     }
@@ -42,6 +44,6 @@ public class Category {
 
     @Override
     public String toString() {
-        return "[ id=" + categoryId + ", categoryName=" + categoryName + " ]";
+        return "[ id=" + categoryid + ", categoryName=" + categoryName + " ]";
     }
 }

@@ -10,13 +10,13 @@ public class Book {
     private Long id;
     private String title;
     private String author;
-    private String publicationYear;
+    private Integer publicationYear;
     private String isbn;
     private String price;
 
     @ManyToOne
     @JsonIgnoreProperties ("books")
-    @JoinColumn(name = "categoryId")
+    @JoinColumn(name = "categoryid")
     private Category category;
 
     public Book(){
@@ -28,7 +28,7 @@ public class Book {
         this.category = null;
     }
 
-    public Book(String title, String author, String publicationYear, String isbn, String price, Category category) {
+    public Book(String title, String author, Integer publicationYear, String isbn, String price, Category category) {
         this.title = title;
         this.author = author;
         this.publicationYear = publicationYear;
@@ -54,10 +54,10 @@ public class Book {
     public void setAuthor(String author) {
         this.author = author;
     }
-    public String getPublicationYear() {
+    public Integer getPublicationYear() {
         return publicationYear;
     }
-    public void setPublicationYear(String publicationYear) {
+    public void setPublicationYear(Integer publicationYear) {
         this.publicationYear = publicationYear;
     }
     public String getIsbn() {
@@ -82,7 +82,7 @@ public class Book {
     @Override
     public String toString() {
         if (this.category != null) {
-            return "Book [id=" + id + ", title=" + title + ", publicationYear=" + publicationYear +  ", isbn=" + isbn + ", price=" + price + ", category=" + this.getCategory().getCategoryName() + "]";
+            return "Book [id=" + id + ", title=" + title + ", publicationYear=" + publicationYear +  ", isbn=" + isbn + ", price=" + price + ", category=" + this.getCategory() + "]";
         } else {
             return "Book [id=" + id + ", title=" + title + ", publicationYear=" + publicationYear +  ", isbn=" + isbn + ", price=" + price + "]";
         }
